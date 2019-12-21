@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     Button login;
     EditText loginText;
     EditText passwordText;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.loginButton);
         loginText = findViewById(R.id.loginText);
         passwordText = findViewById(R.id.passwordText);
-        textView = findViewById(R.id.textView);
+
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         try {
-                            URL url = null;
-                            url = new URL("http://10.0.2.2:8080/waitress/login?username=" + login + "&password=" + password);
+                            URL url = new URL("http://10.0.2.2:8080/waitress/login?username=" + login + "&password=" + password);
 
-                            HttpURLConnection myConnection = null;
+                            HttpURLConnection myConnection;
                             myConnection = (HttpURLConnection) url.openConnection();
                             myConnection.setRequestMethod("POST");
 
@@ -68,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getApplicationContext(), "Wrong username or password",LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Wrong username or password", LENGTH_LONG).show();
                                     }
                                 });
 
